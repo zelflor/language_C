@@ -15,6 +15,21 @@ int main() {
     // remplacer les ...
     printf("Bienvenue, agent %s Lancement du diagnostic !\n", prenomAgent);
 
+    printf("Entrer la température du processeur : \n");
+    float temperatureProcesseur;
+    scanf("%f", &temperatureProcesseur);
+    
+    printf("Entrer le niveau de charge du CPU : \n");
+    int chargeCPU;
+    scanf("%d", &chargeCPU);
+
+    printf("Entrer l'/etat du serveur : \n");
+    char EtatServer;
+    scanf(" %c", &EtatServer);
+
+    printf("Temparature du processeur : %.2f (avec 2 décumales) \nNiveau de charge CPU : %2d%% \nEtat du serveur : %c", temperatureProcesseur, chargeCPU, EtatServer);
+    
+
     /*
     Exercice 3 :
     1. Demande à l’utilisateur d’entrer :

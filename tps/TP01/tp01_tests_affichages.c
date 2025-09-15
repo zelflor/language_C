@@ -4,12 +4,13 @@
 int main() {
 
 
-    int val;
-    scanf("%d", &val);
-    printf("val = %d\n", val);
+    long val;
+    printf("saisir");
+    scanf("%ld", &val);
+    printf("val = %ld\n", val);
 
     printf("Taille: %zu octets\n", sizeof(val));
-
     
     return 0;
 }
+
