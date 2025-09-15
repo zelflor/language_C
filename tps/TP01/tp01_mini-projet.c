@@ -5,6 +5,7 @@
 // 🌡️📊🧪🚿🆔📁🔍🛑
 
 int main() {
+    // Déclaration des variables
     float TempEau1;
     float tempEau2;
     float tempZone1;
@@ -16,14 +17,12 @@ int main() {
     unsigned short idSonde;
     char cheminLog[50];
 
-    // Déclaration des variables
-    // Utilisez les types appropriés pour chaque variable
-    // Notez que les variables doivent être déclarées avant leur utilisation
-
 
 
     // Demande à l'utilisateur d'entrer les valeurs
-    // Utilisez les formattages appropriés pour chaque variable
+    printf("Bienvenue dans le Diagnostic du système Sentinel ! \n");
+    printf("Entrer la valeur de ")
+ 
 
 
 
