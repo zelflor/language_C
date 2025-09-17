@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 
 
@@ -25,8 +26,10 @@ int main() {
     unsigned int pressionPa;
     unsigned int debitpourcent;
     int pariteSonde;
+    unsigned short numDiagnext;
 
     // Demande à l'utilisateur d'entrer les valeurs
+    
     printf("Bienvenue dans le Diagnostic du système Sentinel ! \n");
     printf("Entrer la valeur de la temperature de l'eau dans le circuit 1 en °c\n");
     scanf(" %f", &tempEau1);
@@ -47,13 +50,13 @@ int main() {
     scanf(" %u", &debit);
 
     printf("Entrer le numero de diagnostic\n");
-    scanf(" %u", &numDiag);
-
+    scanf("%u", &numDiag);
+    
     printf("Entrer l'identifiant de la sonde\n");
     scanf(" %u", &idSonde);
 
     printf("Enfin entrer le chemin du fichier de sauvegarde\n");
-    scanf(" %hhd", &cheminLog);
+    scanf(" %29s", cheminLog);
  
 
 
@@ -70,11 +73,11 @@ int main() {
 
     // Calcul de l'écart de température des eaux
     tempEauGap = tempEau1 - tempEau2; 
-
+    tempEauGap = abs(tempEauGap);
 
     // Calcul de l'écart de température des zones
     tempzoneGap = tempZone1 - tempZone2; 
-
+    tempzoneGap = abs(tempzoneGap); 
 
     // Conversion de la pression en Pa
 
@@ -83,10 +86,10 @@ int main() {
     // Calcul du niveau de débit en %
     debitpourcent = debit / 300;
     debitpourcent = debitpourcent * 100;
-
+    
 
     // Incrémentation du numéro de diagnostic
-    numDiag++;
+    numDiagnext = numDiag + 1;
 
     
     // Détermination de la parité du numéro de sonde
@@ -98,12 +101,12 @@ int main() {
     printf("\n-----------------------------------------------------\n");
     printf("          🔍 DIAGNOSTIC DU SYSTEME SENTINEL\n");
     printf("-----------------------------------------------------\n");
-    printf("🔢 Numero prochain diagnostic   : %d \n \n", numDiag);
+    printf("🔢 Numero prochain diagnostic   : %hu \n \n", numDiagnext);
 
     printf("🆔 Sonde ID                     : %d \n", idSonde);
     printf("🆔 Parite sonde                 : %d \n\n", pariteSonde);
 
-    printf("📁 Chemin log                   : %hhd \n\n", cheminLog);
+    printf("📁 Chemin log                   : %s \n\n", cheminLog);
 
     printf("🌡️ Temp. eau 1                  : %.2f \n", tempEau1);
     printf("🌡️ Temp. eau 2                  : %.2f \n", tempEau2);
@@ -113,9 +116,9 @@ int main() {
     printf("🌡️ Temp. zone 2                 : %.2f \n", tempZone2);
     printf("📊 Ecart temp. eau              : %.2f \n\n", tempzoneGap);
 
-    printf("🧪 Pression circuit             : %d \n", pressionPa);
-    printf("🚿 Debit                        : %d \n", debit);
-    printf("🚿 Niveau de debit              : %d \n", debitpourcent);
+    printf("🧪 Pression circuit             : %d Pa\n", pressionPa);
+    printf("🚿 Debit                        : %u L/min\n", debit);
+    printf("🚿 Niveau de debit              : %d %% \n", debitpourcent);
     printf("--------------------------------------------------------\n");
 
 
