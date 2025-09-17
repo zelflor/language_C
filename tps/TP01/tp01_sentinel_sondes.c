@@ -27,7 +27,7 @@ int main() {
     char EtatServer;
     scanf(" %c", &EtatServer);
 
-    printf("Temparature du processeur : %.2f (avec 2 décumales) \nNiveau de charge CPU : %2d%% \nEtat du serveur : %c", temperatureProcesseur, chargeCPU, EtatServer);
+    printf("Temperature du processeur : %.2f (avec 2 décumales) \nNiveau de charge CPU : %2d%% \nEtat du serveur : %c", temperatureProcesseur, chargeCPU, EtatServer);
     
 
     /*
