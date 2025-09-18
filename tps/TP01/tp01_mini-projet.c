@@ -24,11 +24,7 @@ int main() {
     float tempEauGap;
     float tempzoneGap;
     unsigned int pressionPa;
-<<<<<<< HEAD
     float debitpourcent;
-=======
-    unsigned int debitpourcent;
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
     int pariteSonde;
     unsigned short numDiagnext;
 
@@ -54,17 +50,10 @@ int main() {
     scanf(" %u", &debit);
 
     printf("Entrer le numero de diagnostic\n");
-<<<<<<< HEAD
     scanf("%hu", &numDiag);
     
     printf("Entrer l'identifiant de la sonde\n");
     scanf(" %hu", &idSonde);
-=======
-    scanf("%u", &numDiag);
-    
-    printf("Entrer l'identifiant de la sonde\n");
-    scanf(" %u", &idSonde);
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
 
     printf("Enfin entrer le chemin du fichier de sauvegarde\n");
     scanf(" %29s", cheminLog);
@@ -84,31 +73,18 @@ int main() {
 
     // Calcul de l'écart de température des eaux
     tempEauGap = tempEau1 - tempEau2; 
-<<<<<<< HEAD
     tempEauGap = fabs(tempEauGap);
 
     // Calcul de l'écart de température des zones
     tempzoneGap = tempZone1 - tempZone2; 
     tempzoneGap = fabs(tempzoneGap); 
-=======
-    tempEauGap = abs(tempEauGap);
-
-    // Calcul de l'écart de température des zones
-    tempzoneGap = tempZone1 - tempZone2; 
-    tempzoneGap = abs(tempzoneGap); 
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
 
     // Conversion de la pression en Pa
 
     pressionPa = pression * 100;
 
     // Calcul du niveau de débit en %
-<<<<<<< HEAD
     debitpourcent = ((float)debit / 300.0f) * 100.0f;
-=======
-    debitpourcent = debit / 300;
-    debitpourcent = debitpourcent * 100;
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
     
 
     // Incrémentation du numéro de diagnostic
@@ -126,11 +102,7 @@ int main() {
     printf("-----------------------------------------------------\n");
     printf("🔢 Numero prochain diagnostic   : %hu \n \n", numDiagnext);
 
-<<<<<<< HEAD
     printf("🆔 Sonde ID                     : %hu \n", idSonde);
-=======
-    printf("🆔 Sonde ID                     : %d \n", idSonde);
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
     printf("🆔 Parite sonde                 : %d \n\n", pariteSonde);
 
     printf("📁 Chemin log                   : %s \n\n", cheminLog);
@@ -143,15 +115,9 @@ int main() {
     printf("🌡️ Temp. zone 2                 : %.2f \n", tempZone2);
     printf("📊 Ecart temp. eau              : %.2f \n\n", tempzoneGap);
 
-<<<<<<< HEAD
     printf("🧪 Pression circuit             : %u Pa\n", pressionPa);
     printf("🚿 Debit                        : %u L/min\n", debit);
-    printf("🚿 Niveau de debit              : %f %% \n", debitpourcent);
-=======
-    printf("🧪 Pression circuit             : %d Pa\n", pressionPa);
-    printf("🚿 Debit                        : %u L/min\n", debit);
-    printf("🚿 Niveau de debit              : %d %% \n", debitpourcent);
->>>>>>> 392afe934de39b234d234b0c08b27cc75803c86e
+    printf("🚿 Niveau de debit              : %.2f %% \n", debitpourcent);
     printf("--------------------------------------------------------\n");
 
 
