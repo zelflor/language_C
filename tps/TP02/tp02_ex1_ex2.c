@@ -71,37 +71,37 @@ int main() {
     // All new variables TP2
     int tempEauStable;
     int tempZonesStable;
-    unsigned int pressionNormale;
-    unsigned int debitOk;
-    unsigned int sondeDefaut;
-    unsigned int alerteSysteme;
+    char pressionNormale;
+    int debitOk;
+    int sondeDefaut;
+    char alerteSysteme;
 
     // Demande à l'utilisateur d'entrer les valeurs
     
     printf("Bienvenue dans le Diagnostic du système Sentinel ! \n");
     printf("Entrer la valeur de la temperature de l'eau dans le circuit 1 en °c\n");
-    scanf(" %f", &tempEau1);
+    scanf("%f", &tempEau1);
     
     printf("Entrer la valeur de la temperature de l'eau dans le circuit 2 en °c\n");
-    scanf(" %f", &tempEau2);
+    scanf("%f", &tempEau2);
 
     printf("Entrer la valeur de la temperature de la salle des serveurs de la zone 1 en °c \n");
-    scanf(" %f", &tempZone1);
+    scanf("%f", &tempZone1);
 
     printf("Entrer la valeur de la temperature de la salle des serveurs de la zone 2 en °c \n");
-    scanf(" %f", &tempZone2);
+    scanf("%f", &tempZone2);
 
     printf("Entrer la pression dans les circuits en hPa\n");
-    scanf(" %u", &pression);
+    scanf("%u", &pression);
 
     printf("Entrer le débit de l'eau dans les circuits en hPa\n");
-    scanf(" %u", &debit);
+    scanf("%u", &debit);
 
     printf("Entrer le numero de diagnostic\n");
     scanf("%hu", &numDiag);
     
     printf("Entrer l'identifiant de la sonde\n");
-    scanf(" %hu", &idSonde);
+    scanf("%hu", &idSonde);
 
     printf("Enfin entrer le chemin du fichier de sauvegarde\n");
     scanf(" %29s", cheminLog);
@@ -156,7 +156,25 @@ int main() {
             tempZonesStable = 1;
         }
     }
+    
+    if (pression > 100){
+        pressionNormale = 1;
+    }
 
+    if (200 < debit < 300){
+        debitOk = 1;
+    }
+
+    if (idSonde % 2){
+        sondeDefaut = 0;
+    }else {
+        sondeDefaut = 1;
+    }
+
+
+    if (tempEauStable != 1 || tempZonesStable != 1 ||  pressionNormale !=1 || debitOk !=1 || sondeDefaut == 1){
+        alerteSysteme = 1;
+    }
     
 
 // Affichage formaté
@@ -184,11 +202,11 @@ int main() {
     printf("[Temperature eaux stable]        : %d \n", tempEauStable);
     printf("[Temperature zones stable]       : %d \n", tempZonesStable);
     
-    printf("[Pression normale]               : 1 \n");
-    printf("[Debit correct]                  : 1 \n");
-    printf("[Defaut Sonde]                   : 0 \n");
+    printf("[Pression normale]               : %hhd \n", pressionNormale);
+    printf("[Debit correct]                  : %d \n", debitOk);
+    printf("[Defaut Sonde]                   : %d \n", sondeDefaut);
     printf("--------------------------------------------------------\n");
-    printf("🛑 Alerte systeme                : 0\n");
+    printf("🛑 Alerte systeme                : %hhd\n", alerteSysteme);
 
 
     return 0;
