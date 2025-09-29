@@ -150,28 +150,30 @@ int main() {
     }
 
     if (tempZone1 - tempZone2 <= 1){
-        printf("true");
+        // printf("true");
         if (tempZone1 >= 20 && tempZone1 < 25 && tempZone2 >= 20 && tempZone2 < 25){
-            printf("true");
+            // printf("true");
             tempZonesStable = 1;
         }
     }
-    
+    // si pression est plus elever que 100
     if (pression > 100){
         pressionNormale = 1;
     }
 
+    // si debit est entre 200 et 300
     if (200 < debit < 300){
         debitOk = 1;
     }
 
+    // si idsonde est divisible par 2
     if (idSonde % 2){
         sondeDefaut = 0;
     }else {
         sondeDefaut = 1;
     }
 
-
+    // verification si des valeurs ne sont pas bonne et donc mettre 1 a alerte
     if (tempEauStable != 1 || tempZonesStable != 1 ||  pressionNormale !=1 || debitOk !=1 || sondeDefaut == 1){
         alerteSysteme = 1;
     }
@@ -181,24 +183,24 @@ int main() {
     printf("\n-----------------------------------------------------\n");
     printf("          🔍 DIAGNOSTIC DU SYSTEME SENTINEL\n");
     printf("-----------------------------------------------------\n");
-    printf("🔢 Numero prochain diagnostic   : %hu \n \n", numDiagnext);
+    printf("Numero prochain diagnostic   : %hu \n \n", numDiagnext);
 
-    printf("🆔 Sonde ID                     : %hu \n", idSonde);
-    printf("🆔 Parite sonde                 : %d \n\n", pariteSonde);
+    printf("Sonde ID                     : %hu \n", idSonde);
+    printf("Parite sonde                 : %d \n\n", pariteSonde);
 
-    printf("📁 Chemin log                   : %s \n\n", cheminLog);
+    printf("Chemin log                   : %s \n\n", cheminLog);
 
-    printf("🌡️ Temp. eau 1                  : %.2f \n", tempEau1);
-    printf("🌡️ Temp. eau 2                  : %.2f \n", tempEau2);
-    printf("📊 Ecart temp. eau              : %.2f \n\n", tempEauGap);
+    printf("Temp. eau 1                  : %.2f \n", tempEau1);
+    printf("Temp. eau 2                  : %.2f \n", tempEau2);
+    printf("Ecart temp. eau              : %.2f \n\n", tempEauGap);
 
-    printf("🌡️ Temp. zone 1                 : %.2f \n", tempZone1);
-    printf("🌡️ Temp. zone 2                 : %.2f \n", tempZone2);
-    printf("📊 Ecart temp. eau              : %.2f \n\n", tempzoneGap);
+    printf("Temp. zone 1                 : %.2f \n", tempZone1);
+    printf("Temp. zone 2                 : %.2f \n", tempZone2);
+    printf("Ecart temp. eau              : %.2f \n\n", tempzoneGap);
 
-    printf("🧪 Pression circuit             : %u Pa\n", pressionPa);
-    printf("🚿 Debit                        : %u L/min\n", debit);
-    printf("🚿 Niveau de debit              : %.2f %% \n \n", debitpourcent);
+    printf("Pression circuit             : %u Pa\n", pressionPa);
+    printf("Debit                        : %u L/min\n", debit);
+    printf("Niveau de debit              : %.2f %% \n \n", debitpourcent);
     printf("[Temperature eaux stable]        : %d \n", tempEauStable);
     printf("[Temperature zones stable]       : %d \n", tempZonesStable);
     
@@ -206,7 +208,7 @@ int main() {
     printf("[Debit correct]                  : %d \n", debitOk);
     printf("[Defaut Sonde]                   : %d \n", sondeDefaut);
     printf("--------------------------------------------------------\n");
-    printf("🛑 Alerte systeme                : %hhd\n", alerteSysteme);
+    printf("Alerte systeme                : %hhd\n", alerteSysteme);
 
 
     return 0;
