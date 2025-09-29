@@ -8,11 +8,21 @@ int main() {
     unsigned char statut = 0b00001110;
     unsigned char masqueVentilateur = 0b00000001;
 
+    unsigned char masqueForceFroid = 0b00000100;
+
     if ((statut & masqueVentilateur) !=0){
         printf ("Ventilateur actif");
     }else {
         printf ("Ventilateur inactif");
     }
+
+
+    statut = statut ^ masqueVentilateur;
+    printf("\n %", statut);
+    printf("\n %u", statut);
+    printf(" \n %02X", statut);
+
+
     return 0;
 }
 
