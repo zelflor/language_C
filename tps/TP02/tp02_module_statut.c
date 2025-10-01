@@ -1,11 +1,11 @@
-// Exercice 3
+// Exercice 3 +
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 
 int main() {
-    unsigned char statut = 0b00001110;
+    unsigned char statut = 0b00000000;
     unsigned char masqueVentilateur = 0b00000001;
 
     unsigned char masqueForceFroid = 0b00000100;
@@ -17,8 +17,7 @@ int main() {
     }
 
 
-    statut = statut ^ masqueVentilateur;
-    printf("\n %", statut);
+    statut = statut ^ masqueForceFroid;
     printf("\n %u", statut);
     printf(" \n %02X", statut);
 
