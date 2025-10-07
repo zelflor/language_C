@@ -17,7 +17,7 @@ int main() {
 
     float finalPrice = 0;
 
-    printf("\nSaisir votre âge :");
+    printf("\nSaisir votre age :");
     scanf("%d", &age);
     printf("\n");
 
