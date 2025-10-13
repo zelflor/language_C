@@ -5,27 +5,63 @@
 #include <math.h>
 
 int main() {
-    int menuQuestion;
+    unsigned char statut;
+    int menuQuestion, bit;
+    unsigned char masqueVentilateur = 0b00000001;
+    unsigned char masqueReveilSonde = 0b00000010;
+    unsigned char masqueForceFroid = 0b00000100;
+
     printf("Souhaitez-vous : \n");
     printf("    - (1) Lire un état\n");
     printf("    - (2) Modifier un état\n");
     printf("Choix : ");
     scanf("%d", &menuQuestion);
-    unsigned char statut;
-    printf("\n\nEntrez la valeur actuelle de l'octet de statut (en décimal) : ");
-    scanf("%d", &statut);
-    printf("Statut actuel : 0x%02X (hex), %d (decimal)", statut, statut);
-    switch (menuQuestion)
-    {
-    case 1:
-        
-        break;
-    case 2:
-        break;
 
-    default:
-        printf("\nAucune modification apporter.");
-        break;
+
+    
+    printf("\n\nEntrez la valeur actuelle de l'octet de statut (en décimal) : ");
+    scanf("%hhd", &statut);
+    printf("Statut actuel : 0x%02X (hex), %d (decimal)", statut, statut);
+    
+    printf("Index des bits disponibles (0 à 7) : \n");
+    printf("bit 0 : Ventilateur                 0 = Inactif        1 = Actif\n");
+    printf("bit 1 : Sonde                       0 = Reveillee      1 = En veille\n");
+    printf("bit 2 : Refroidissement             0 = Normal         1 = Force\n");
+    printf("bit 3 : Mode maintenance            0 = Inactif        1 = En cours\n");
+    printf("bit 4 : Température critique        0 = Normale        1 = Alerte\n");
+    printf("bit 5 : Niveau d’eau                0 = Normal         1 = Bas\n");
+    printf("bit 6 : Surveillance automatique    0 = Activee        1 = Desactivee\n");
+    printf("bit 7 : Arrêt d’urgence             0 = Non détectee   1 = Urgence\n");
+
+    switch (menuQuestion){
+        case 1:
+            printf("Quel bit voulez-vous cibler (0 à 7) ?\n");
+            scanf("%d", &bit);
+
+            switch (bit)
+            {
+            case 0:
+                printf("Bit 0 : ventilateur ");
+                if ((statut & masqueVentilateur) !=0){
+                    printf("ACTIF");
+                }else {
+                    printf("Inactif");
+                }
+                break;
+            
+            default:
+                break;
+            }
+
+            break;
+        case 2:
+            printf("Quel bit voulez-vous cibler (0 à 7) ?");
+            scanf("%d", &bit);
+            break;
+
+        default:
+            printf("\nAucune modification apporter.");
+            break;
     }
     // unsigned char statut = 0b00000000;
     // unsigned char masqueVentilateur = 0b00000001;
