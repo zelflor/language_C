@@ -21,7 +21,7 @@ int main(){
     }
 
     nbrMoyenne = (float)nbrTotalNotes / (float)nbrNotes;
-    printf("Voici la moyenne des notes : %.2f", nbrMoyenne);
+    printf("Voici la moyenne des notes : %.2f%%", nbrMoyenne);
 
     return 0;
 }
