@@ -1,16 +1,24 @@
 #include <stdio.h>
 
 int main() {
-    int i = -1;
+    // int i = -1;
     // do {
     //     printf("%d ", i);
     //     i--;
     // } while (i > 0);
-    while(i > 0){
-        printf("%d ", i);
-        i--;
-    }
+    // while(i > 0){
+    //     printf("%d ", i);
+    //     i--;
+    // }
     
+
+
+        int i = 1;
+        do {
+            printf("%d", i);
+            i++;
+        }while (i <= 5);
+
     return 0;
 }
 
@@ -22,3 +30,5 @@ int main() {
 
 // Que se passerait-il avec un do-while et avec while si i était initialisé à -1.
 // si c'est while sa affiche rien alors que do while sa affiche -1
+
+// Modifiez le code pour afficher les nombres de 1 à 5 en utilisant do-while.
