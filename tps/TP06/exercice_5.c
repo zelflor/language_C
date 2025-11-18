@@ -5,7 +5,7 @@ int main(){
     do {
         printf("Saisir n entre 1 et 10 :");
         scanf("%d", &n);
-    }while (n <= 1 && n>= 10);
+    }while (n < 1 || n > 10);
 
     for (int i = 1; i<= n; i++){
         for (int j = 1; j <= 10; j++)
