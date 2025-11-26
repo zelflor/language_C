@@ -1,5 +1,1 @@
-                if (j <= 31){
-                printf("    X");
-                }else {
-                    printf("%5c", j);
-                }
+printf("\n%5d", (i * 10));
