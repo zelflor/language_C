@@ -19,8 +19,10 @@ int main(){
 
     for (int i = (nbrsaisie - 1); i >= 0; i--) {
         nbrMoyenne = nbrMoyenne + tabNotes[i];
+        // printf("%d = %f %d\n",i, nbrMoyenne, tabNotes[i]);
     }
-    nbrMoyenne = nbrMoyenne / nbrsaisie;
-    printf("La moyenne est egal a %d", nbrMoyenne);
+
+    nbrMoyenne = nbrMoyenne / (float)nbrsaisie;
+    printf("La moyenne est egal a %.2f", nbrMoyenne);
     return 0;
 }
