@@ -13,7 +13,13 @@ int main() {
     printf("AFFICHAGE CARACTERE PAR CARACTERE DE LA CHAINE\n");
     printf("Saisir une chaine de caracteres : ");
     scanf("%s", saisie);
-    for (int i = 0; i <= 10; i++){
+    
+    int nbrTaille = 0;
+    while (saisie[nbrTaille] != '\0'){
+        nbrTaille++;
+    }
+
+    for (int i = 0; i <= nbrTaille; i++){
         printf("%c ", saisie[i]);
     }
     printf("\n-----------------------------------------------------------\n");
@@ -81,12 +87,10 @@ int main() {
      char saisieenvers[30] = { 0 };
     scanf("%29s", &saisieenvers);
     int nbrMaxTaille = 0;
-    for (int z = 0; z < 29; z++){
-        if (saisieenvers[z] != 0){
-            nbrMaxTaille++;
-        }
-        
+     while (saisieenvers[nbrMaxTaille] != '\0'){
+        nbrMaxTaille++;
     }
+    
     for (int a = nbrMaxTaille; a >= 0; a--){
         printf("%c", saisieenvers[a]);
     }
