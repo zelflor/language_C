@@ -5,19 +5,16 @@ char pair(unsigned int n);
 
 int main() 
 {
-    int x;
+    unsigned int x;
 
     // Saisie du nombre
     printf("Entrez un entier : ");
-    scanf("%d", &x);
+    scanf("%u", &x);
 
     // Affiche la parité (appel de la fonction)
 
-    if ( pair(x) == 0){
-        printf("%d est un nombre pair.", x);
-    }else {
-        printf("%d est un nombre impair.", x);
-    }
+    if ( pair(x) == 0) printf("%d est un nombre pair.", x);
+    else printf("%d est un nombre impair.", x);
 
     return 0;
 }
