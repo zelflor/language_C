@@ -1,4 +1,4 @@
-
+#include <stdio.h>
 // Prototype
 
 char pair(unsigned int n);
