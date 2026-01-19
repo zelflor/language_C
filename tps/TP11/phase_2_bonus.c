@@ -2,7 +2,7 @@
 #include <string.h>
 #include <assert.h>
 
-#define NB_PLACES 60
+#define NB_PLACES 60 / 2 // par rangé total
 #define FENETRES 0
 #define COULOIR 1
 #define LIBRE 0
@@ -125,7 +125,14 @@ int libererUnePlaceCouloir(int wagon[][NB_PLACES]);
 int afficherMenu(int wagon[][NB_PLACES]);
 
 
-
+/**
+  * @brief Permet de reserver une place spécifique grace a sont identifiant
+  *
+  *
+  * @param wagon tableau 2x30 représentant les places du wagon
+  * @return 0 si une place a été réservée , -1 si toutes les places sont déjà occupées
+  */
+int reserverUnePlaceByID(int wagon[][NB_PLACES]);
 
 
 
@@ -280,6 +287,7 @@ int afficherMenu(int wagon[][NB_PLACES]){
     int saisie, returnValue;
 
     do {
+        printf("\n0 - reserver une place grace a un identifiant");
         printf("\n1 - reserver une place Couloir");
         printf("\n2 - reserver une place Fenetres");
         printf("\n3 - afficher le bilan des places occupees");
@@ -289,11 +297,19 @@ int afficherMenu(int wagon[][NB_PLACES]){
         printf("\n7 - quitter \n");
         scanf("%d", &saisie);
 
-        if (saisie == 1){
+        if (saisie == 0){
+
+            returnValue = reserverUnePlaceByID(wagon);
+            if (returnValue == -1){
+                printf("\n Aucune place disponible. \n");
+            }
+
+        }else if (saisie == 1){
             returnValue = reserverUnePlaceCouloir(wagon);
             if (returnValue == -1){
                 printf("\n Aucune place Couloir disponible. \n");
             }
+        
         }else if (saisie == 2){
             returnValue = reserverUnePlaceFenetres(wagon);
             if (returnValue == -1){
@@ -317,4 +333,25 @@ int afficherMenu(int wagon[][NB_PLACES]){
        
     }while (saisie != 7);
 
+}
+
+int reserverUnePlaceByID(int wagon[][NB_PLACES]){
+    int placeID;
+    scanf("%d", &placeID);
+    if (placeID <= NB_PLACES / 2){
+        if (wagon[FENETRES][placeID] == 0){
+            wagon[FENETRES][placeID] = 1;
+            return 0;
+        }
+            
+    }else if (placeID > NB_PLACES / 1 && placeID <= NB_PLACES){
+        placeID = placeID / 2;
+        if (wagon[COULOIR][placeID] == 0){
+            wagon[COULOIR][placeID] = 1;
+            return 0;
+        }
+    }
+    
+
+    return -1;
 }
