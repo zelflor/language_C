@@ -15,24 +15,90 @@ void afficherWagon(int wagon[][NB_PLACES / 2]);
 
 int reserverunePlace(int wagon[][NB_PLACES / 2]);
 
+int reserverUnePlaceFenetres(int wagon[][NB_PLACES / 2]);
+
+int reserverUnePlaceCouloir(int wagon[][NB_PLACES / 2]);
+
+int faireBilanPlacesOccupees(int wagon[][NB_PLACES / 2]);
+
+int libererUnePlaceCouloir(int wagon[][NB_PLACES / 2]);
+
+int libererUnePlaceFenetres(int wagon[][NB_PLACES / 2]);
+
+
 int afficherMenu(void);
 
 int main(void){
     int wagon[2][NB_PLACES / 2];
     initWagon(wagon);
-    int i = 1;
-    while (i == 1)
+    int exit = 0;
+    while (exit == 0)
     {
-        int result = reserverunePlace(wagon);
-        if (result == 0){
-            printf("\n La place a ete prise");
-        }else {
-            printf("\n La place est deja occupe");
-        }
-
-        afficherWagon(wagon);
-    }
     
+    
+    int saisie = afficherMenu();
+    int result;
+
+    switch (saisie)
+    {
+    case 1:
+        
+        result = reserverunePlace(wagon);
+        if (result == 0){
+            printf("\n La place a bien ete reserver!");
+        }else {
+            printf("\n La place est deja occupe.");
+        }
+        break;
+
+    case 2:
+        result = reserverUnePlaceCouloir(wagon);
+        if (result == 0){
+            printf("\n Une place a bien ete reserver!");
+        }else {
+            printf("\n Il n y a plus de place cote couloir.");
+        }
+        break;
+
+    case 3:
+        result = reserverUnePlaceFenetres(wagon);
+        if (result == 0){
+            printf("\n Une place a bien ete reserver!");
+        }else {
+            printf("\n Il n y a plus de place cote fenetres.");
+        }
+        break;
+    case 4:
+        result = faireBilanPlacesOccupees(wagon);
+        printf("\nPlaces : %d / %d", result, NB_PLACES);
+        break;
+    case 5:
+        result = libererUnePlaceCouloir(wagon);
+        if (result == 0){
+            printf("\n Une place a bien ete liberer!");
+        }else {
+            printf("\n Toute les places sont libre.");
+        }
+        break;
+    case 6:
+        result = libererUnePlaceFenetres(wagon);
+        if (result == 0){
+            printf("\n Une place a bien ete liberer!");
+        }else {
+            printf("\n Toute les places sont libre.");
+        }
+        break;
+    case 7:
+        afficherWagon(wagon);
+        break;
+    case 8:
+        exit++;
+        break;
+    default:
+        break;
+    }
+
+    }
 
     return 0;
 }
@@ -71,7 +137,7 @@ int reserverunePlace(int wagon[][NB_PLACES / 2]){
 
     int saisieIdPlace = 0;
     do {
-        printf("\n Saisir l identifiant de la place");
+        printf("\n Saisir l identifiant de la place : ");
         scanf("%d", &saisieIdPlace);
     }while (saisieIdPlace < 0 || saisieIdPlace > NB_PLACES);
 
@@ -99,14 +165,87 @@ int reserverunePlace(int wagon[][NB_PLACES / 2]){
     return -1;
 }
 
+
 int afficherMenu(void){
+    printf("\n----------------------------");
+    printf("\n1 - reserver une place specifique");
+    printf("\n2 - reserver une place Couloir");
+    printf("\n3 - reserver une place Fenetres");
+    printf("\n4 - afficher le bilan des places occupees");
+    printf("\n5 - liberer une place Couloir");
+    printf("\n6 - liberer une place Fenetres");
+    printf("\n7 - afficher le wagon");
+    printf("\n8 - quitter\n");
     
-    printf("1 - reserver une place specifique");
-    printf("2 - reserver une place Couloir");
-    printf("3 - reserver une place Fenetres");
-    printf("4 - afficher le bilan des places occupees");
-    printf("5 - liberer une place Couloir");
-    printf("6 - liberer une place Fenetres");
-    printf("7 - afficher le wagon");
-    printf("8 - quitter");
+    int saisie;    
+    do {
+        scanf("%d", &saisie);
+    }while (saisie <= 0 || saisie > 8);
+    printf("\n----------------------------\n");
+    return saisie;
+}
+
+int reserverUnePlaceFenetres(int wagon[][NB_PLACES / 2]){
+    for (int i = 0; i < NB_PLACES / 2; i++)
+    {
+        if (wagon[FENETRES][i] == 0){
+            wagon[FENETRES][i] = 1;
+            return 0;
+        }
+    }
+    return -1;
+        
+}
+
+int reserverUnePlaceCouloir(int wagon[][NB_PLACES / 2]){
+    for (int i = 0; i < NB_PLACES / 2; i++)
+    {
+        if (wagon[COULOIR][i] == 0){
+            wagon[COULOIR][i] = 1;
+            return 0;
+        }
+    }
+    return -1;
+        
+}
+
+int faireBilanPlacesOccupees(int wagon[][NB_PLACES / 2]){
+    int nbr_place_couloir = 0, nbr_place_fenetres = 0;
+    for (int i = 0; i < NB_PLACES / 2; i++)
+    {
+        if (wagon[COULOIR][i] == 1){
+            nbr_place_couloir++;
+        }
+        if (wagon[FENETRES][i] == 1){
+            nbr_place_fenetres++;
+        }
+    }
+    printf("\nnombre de places occupees cote Fenetres : %d", nbr_place_fenetres);
+    printf("\nnombre de places occupees cote Couloir : %d", nbr_place_couloir);
+
+    return nbr_place_couloir + nbr_place_fenetres;
+}
+
+int libererUnePlaceFenetres(int wagon[][NB_PLACES / 2]){
+    for (int i = 0; i < NB_PLACES / 2; i++)
+    {
+        if (wagon[FENETRES][i] == 1){
+            wagon[FENETRES][i] = 0;
+            return 0;
+        }
+    }
+    return -1;
+        
+}
+
+int libererUnePlaceCouloir(int wagon[][NB_PLACES / 2]){
+    for (int i = 0; i < NB_PLACES / 2; i++)
+    {
+        if (wagon[COULOIR][i] == 1){
+            wagon[COULOIR][i] = 0;
+            return 0;
+        }
+    }
+    return -1;
+        
 }
