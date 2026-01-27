@@ -24,7 +24,6 @@ int reserverUnePlaceFenetres(int wagon[][NB_PLACES]);
   *
   *
   * @param wagon tableau 2x30 représentant les places du wagon
-  * @return ?
   */
 void initWagon(int wagon[][NB_PLACES]);
 
@@ -34,7 +33,6 @@ void initWagon(int wagon[][NB_PLACES]);
   *
   *
   * @param wagon tableau 2x30 représentant les places du wagon
-  * @return void
   */
 void afficherWagon(int wagon[][NB_PLACES]);
 
@@ -47,15 +45,58 @@ void afficherWagon(int wagon[][NB_PLACES]);
   */
 int reserverUnePlaceFenetres(int wagon[][NB_PLACES]);
 
+/**
+  * @brief la première place libre côté Couloir (de l’indice 0 vers 29) est mise à 1
+  *
+  *
+  * @param wagon tableau 2x30 représentant les places du wagon
+  * @return 0 si une place a été réservée , -1 si toutes les places Couloir sont déjà occupées
+  */
 int reserverUnePlaceCouloir(int wagon[][NB_PLACES]);
 
+
+/**
+  * @brief la première place libre de n'importe quel côté (de l’indice 0 vers 59) est mise à 1
+  *
+  *
+  * @param wagon tableau 2x30 représentant les places du wagon
+  * @return 0 si une place a été réservée , -1 si toutes les places sont déjà occupées
+  */
 int reserverUnePlace(int wagon[][NB_PLACES]);
 
+
+/**
+  * @brief donne le bilan des places occupees.
+  *
+  * Affiche le nombre de places prises de tout les cotés (fenetres, couloir)
+  *
+  * @param wagon tableau NB_PLACES représentant les places du wagon
+  * @return int total de place occupée
+  */
 int faireBilanPlacesOccupees(int wagon[][NB_PLACES]);
 
-int libererUnePlaceFenetres(int wagon[][NB_PLACES]);
-
+/**
+  * @brief libere une place côté Couloir.
+  *
+  * Recherche la première place libre (1) côté Couloir, en partant de l'indice 0.
+  * Passe cette place à 0 pour indiquer une réservation.
+  *
+  * @param wagon tableau NB_PLACES représentant les places du wagon
+  * @return int 0 si une place a été liberé avec succès, -1 si toute les places sont libre
+  */
 int libererUnePlaceCouloir(int wagon[][NB_PLACES]);
+
+
+/**
+  * @brief libere une place côté Fenetres.
+  *
+  * Recherche la première place libre (1) côté Fenetres, en partant de l'indice 0.
+  * Passe cette place à 0 pour indiquer une réservation.
+  *
+  * @param wagon tableau NB_PLACES représentant les places du wagon
+  * @return int 0 si une place a été liberé avec succès, -1 si toute les places sont libre
+  */
+int libererUnePlaceFenetres(int wagon[][NB_PLACES]);
 
 
 
